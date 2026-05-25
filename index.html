@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>US ABM Workflow — GrowthSpree 2026</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #0a1628;
+  color: #e2e8f0;
+  padding: 48px 24px;
+  min-width: 960px;
+}
+.container { max-width: 1300px; margin: 0 auto; }
+
+/* ── HEADER ── */
+.header { text-align: center; margin-bottom: 52px; }
+.header .badge {
+  background: rgba(212,175,55,0.12); color: #D4AF37;
+  border: 1px solid rgba(212,175,55,0.3); border-radius: 20px;
+  padding: 5px 18px; font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  display: inline-block; margin-bottom: 14px;
+}
+.header h1 { font-size: 34px; font-weight: 700; color: #f8fafc; margin-bottom: 8px; letter-spacing: -0.5px; }
+.header p { color: #475569; font-size: 13px; }
+
+/* ── PHASE LAYOUT: 2-COLUMN (content + explanation) ── */
+.phase-wrap {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 16px;
+  align-items: start;
+}
+.phase-wrap.full { grid-template-columns: 1fr; }
+
+/* ── PHASE CARD ── */
+.phase-card {
+  background: #132035; border: 1px solid #1e3a5f;
+  border-radius: 18px; padding: 26px 30px; position: relative;
+}
+.phase-card.gold-border { border-color: rgba(212,175,55,0.35); }
+
+.phase-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
+.phase-num {
+  background: #D4AF37; color: #0a1628;
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; flex-shrink: 0; margin-top: 2px;
+}
+.phase-num.muted { background: #1e3a5f; color: #475569; }
+.phase-title { font-size: 16px; font-weight: 700; color: #f1f5f9; }
+.phase-sub { font-size: 11px; color: #334155; margin-top: 3px; line-height: 1.5; }
+
+/* ── PHASE OVERVIEW TEXT ── */
+.phase-overview {
+  background: rgba(212,175,55,0.03);
+  border: 1px solid rgba(212,175,55,0.1);
+  border-left: 3px solid rgba(212,175,55,0.4);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.7;
+}
+.phase-overview strong { color: #cbd5e1; font-weight: 600; }
+
+/* ── EXPLANATION SIDEBAR ── */
+.explain-box {
+  background: #0d1e35;
+  border: 1px solid #1e3a5f;
+  border-radius: 14px;
+  padding: 20px;
+  position: sticky;
+  top: 24px;
+}
+.explain-box .ex-title {
+  font-size: 10px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.8px; color: #D4AF37;
+  margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
+}
+.explain-item {
+  margin-bottom: 14px;
+}
+.explain-item:last-child { margin-bottom: 0; }
+.explain-item .ei-head {
+  font-size: 11px; font-weight: 700; color: #e2e8f0;
+  margin-bottom: 4px; display: flex; align-items: center; gap: 5px;
+}
+.explain-item .ei-body {
+  font-size: 11px; color: #475569; line-height: 1.6;
+}
+.explain-item .ei-body em { color: #94a3b8; font-style: normal; font-weight: 500; }
+.explain-divider { border: none; border-top: 1px solid #1e3a5f; margin: 12px 0; }
+
+/* Insight callout inside sidebar */
+.insight {
+  background: rgba(212,175,55,0.06);
+  border: 1px solid rgba(212,175,55,0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 11px;
+  color: #D4AF37;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+.insight .ins-label { font-weight: 800; font-size: 10px; letter-spacing: 0.4px; margin-bottom: 3px; }
+
+/* ── SECTION LABEL ── */
+.sec-label {
+  font-size: 10px; color: #334155; text-transform: uppercase;
+  letter-spacing: 0.6px; font-weight: 700; margin-bottom: 9px;
+}
+
+/* ── TOOL CHIPS ── */
+.tools-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.tool {
+  display: flex; align-items: center; gap: 7px;
+  background: #0a1628; border: 1px solid #1e3a5f; border-radius: 8px;
+  padding: 6px 12px; font-size: 12px; color: #cbd5e1;
+  transition: border-color 0.2s, color 0.2s; cursor: default;
+}
+.tool:hover { border-color: rgba(212,175,55,0.4); color: #f8fafc; }
+.tool.accent { border-color: rgba(212,175,55,0.3); }
+.tool img {
+  width: 18px; height: 18px; border-radius: 4px;
+  object-fit: contain; background: #fff; padding: 1px; flex-shrink: 0;
+}
+.tool .fallback-icon {
+  width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 800; color: #fff;
+}
+.tag-pill { font-size: 10px; font-weight: 600; padding: 1px 7px; border-radius: 4px; margin-left: 4px; }
+.tag-core { background: rgba(212,175,55,0.15); color: #D4AF37; }
+.tag-orch { background: rgba(168,85,247,0.15); color: #c084fc; }
+.tag-new  { background: rgba(34,197,94,0.1);  color: #4ade80; }
+
+/* ── TOOL ROLE ANNOTATION ── */
+.tool-block { margin-bottom: 8px; }
+.tool-role { font-size: 10px; color: #334155; margin-top: 4px; padding-left: 4px; line-height: 1.4; }
+.tool-role em { color: #475569; font-style: normal; }
+
+/* ── CONNECTOR ── */
+.connector {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0; padding: 4px 0; width: 100%;
+}
+/* When in two-col layout we only want the arrow under the left card, not spanning both cols */
+.phase-wrap + .connector { width: calc(100% - 316px); }
+
+.conn-line { width: 2px; height: 28px; background: linear-gradient(to bottom, #D4AF37 60%, rgba(212,175,55,0.15)); }
+.conn-head { width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 9px solid rgba(212,175,55,0.25); }
+.conn-label {
+  font-size: 10px; color: #D4AF37;
+  background: rgba(212,175,55,0.06); border: 1px solid rgba(212,175,55,0.18);
+  padding: 2px 12px; border-radius: 10px; margin: 5px 0;
+  white-space: nowrap;
+}
+
+/* ── GRID HELPERS ── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+
+/* ── INNER CARD ── */
+.ic { background: #0a1628; border: 1px solid #1e3a5f; border-radius: 10px; padding: 14px 16px; }
+.ic-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 9px; }
+
+/* ── TIER BADGES ── */
+.t1 { background: rgba(212,175,55,0.15); color: #D4AF37; border-radius: 4px; padding: 2px 8px; font-size: 10px; font-weight: 700; }
+.t2 { background: rgba(96,165,250,0.15); color: #60a5fa; border-radius: 4px; padding: 2px 8px; font-size: 10px; font-weight: 700; }
+.t3 { background: rgba(148,163,184,0.15); color: #94a3b8; border-radius: 4px; padding: 2px 8px; font-size: 10px; font-weight: 700; }
+
+/* ── SCORE PILLS ── */
+.sp { display: inline-flex; align-items: center; gap: 4px; border-radius: 20px; padding: 3px 10px; font-size: 11px; font-weight: 700; border: 1px solid; }
+.sp-hot  { background: rgba(239,68,68,0.12);  color: #f87171; border-color: rgba(239,68,68,0.3); }
+.sp-warm { background: rgba(245,158,11,0.12); color: #fbbf24; border-color: rgba(245,158,11,0.3); }
+.sp-cool { background: rgba(96,165,250,0.12); color: #60a5fa; border-color: rgba(96,165,250,0.3); }
+.sp-cold { background: rgba(99,102,241,0.12); color: #a5b4fc; border-color: rgba(99,102,241,0.3); }
+.sp-gold { background: rgba(212,175,55,0.15); color: #D4AF37; border-color: rgba(212,175,55,0.4); }
+
+/* ── SCORE TABLE ── */
+.score-tbl { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 12px; }
+.score-tbl th {
+  text-align: left; padding: 8px 12px; background: #0a1628;
+  color: #475569; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px;
+  border-bottom: 1px solid #1e3a5f;
+}
+.score-tbl td { padding: 8px 12px; border-bottom: 1px solid #1e3a5f; color: #94a3b8; vertical-align: middle; }
+.score-tbl tr:last-child td { border-bottom: none; }
+.bar-wrap { display: flex; align-items: center; gap: 8px; }
+.bar { height: 5px; border-radius: 3px; background: #D4AF37; }
+.pts-val { font-weight: 700; color: #D4AF37; font-size: 12px; white-space: nowrap; }
+.tbl-note { font-size: 10px; color: #334155; margin-top: 4px; font-style: italic; }
+
+/* ── WEEK CARDS ── */
+.week-row { display: flex; gap: 8px; }
+.wk { flex: 1; background: #0a1628; border: 1px solid #1e3a5f; border-radius: 8px; padding: 10px 12px; }
+.wk-num { color: #D4AF37; font-size: 11px; font-weight: 700; margin-bottom: 3px; }
+.wk-type { color: #f1f5f9; font-size: 12px; font-weight: 600; margin-bottom: 3px; }
+.wk-desc { color: #475569; font-size: 10px; }
+.wk-why  { color: #334155; font-size: 10px; margin-top: 5px; padding-top: 5px; border-top: 1px solid #1e3a5f; font-style: italic; }
+
+/* ── CHANNEL PILLS ── */
+.ch { display: inline-flex; align-items: center; gap: 5px; border-radius: 6px; padding: 4px 10px; font-size: 11px; font-weight: 600; border: 1px solid; }
+.ch-li   { background: rgba(10,102,194,0.15); color: #60a5fa; border-color: rgba(10,102,194,0.3); }
+.ch-em   { background: rgba(34,197,94,0.1);   color: #4ade80; border-color: rgba(34,197,94,0.25); }
+.ch-call { background: rgba(168,85,247,0.1);  color: #c084fc; border-color: rgba(168,85,247,0.25); }
+
+/* ── SEQUENCE STEPS ── */
+.seq-step { font-size: 11px; color: #64748b; line-height: 1.9; }
+.seq-step .day { color: #D4AF37; font-weight: 700; }
+.seq-step .action { color: #94a3b8; }
+.seq-step .why { color: #334155; font-size: 10px; margin-left: 4px; }
+
+/* ── SIGNAL GRID ── */
+.sig-grid { display: grid; gap: 8px; }
+.sig-item { background: #0a1628; border: 1px solid #1e3a5f; border-radius: 8px; padding: 10px 8px; text-align: center; }
+.sig-icon { font-size: 20px; margin-bottom: 4px; }
+.sig-name { font-size: 10px; color: #64748b; margin-bottom: 4px; line-height: 1.3; }
+.sig-pts  { font-size: 13px; font-weight: 800; color: #D4AF37; }
+.sig-why  { font-size: 9px; color: #1e3a5f; margin-top: 3px; line-height: 1.3; }
+
+/* ── SLA BOXES ── */
+.sla-row { display: flex; gap: 10px; margin-top: 12px; }
+.sla-box { flex: 1; border-left: 3px solid; padding: 12px 16px; border-radius: 0 8px 8px 0; background: #0a1628; font-size: 12px; }
+.sla-box.red    { border-color: #ef4444; }
+.sla-box.amber  { border-color: #f59e0b; }
+.sla-box.purple { border-color: #a78bfa; }
+.sla-title  { font-weight: 700; color: #f1f5f9; margin-bottom: 4px; font-size: 12px; }
+.sla-detail { color: #475569; line-height: 1.5; font-size: 11px; }
+.sla-rationale { color: #334155; font-size: 10px; margin-top: 5px; padding-top: 5px; border-top: 1px solid #1e3a5f; font-style: italic; }
+em { color: #f8fafc; font-style: normal; font-weight: 600; }
+
+/* ── SCORE BANDS ── */
+.band-row { display: flex; flex-direction: column; gap: 5px; }
+.band { display: flex; justify-content: space-between; align-items: center; background: #0a1628; border: 1px solid #1e3a5f; border-radius: 8px; padding: 8px 12px; gap: 8px; }
+.band-name { font-size: 12px; color: #94a3b8; }
+.band-detail { font-size: 10px; color: #334155; flex: 1; }
+.band.fire { border-color: rgba(212,175,55,0.4); background: rgba(212,175,55,0.04); }
+.band.fire .band-name { color: #D4AF37; font-weight: 700; }
+
+/* ── PIPELINE ── */
+.pipeline { display: flex; align-items: flex-start; gap: 0; flex-wrap: nowrap; padding: 4px 0; overflow-x: auto; }
+.pl-stage { background: #0a1628; border: 1px solid #1e3a5f; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #94a3b8; text-align: center; white-space: nowrap; flex-shrink: 0; }
+.pl-stage .stage-sub  { font-size: 10px; color: #334155; margin-top: 2px; }
+.pl-stage .stage-note { font-size: 9px; color: #1e3a5f; margin-top: 3px; font-style: italic; }
+.pl-stage.start { border-color: rgba(212,175,55,0.4); }
+.pl-stage.start .pl-name { color: #D4AF37; font-weight: 700; }
+.pl-stage.end   { border-color: rgba(74,222,128,0.4); }
+.pl-stage.end   .pl-name { color: #4ade80; font-weight: 700; }
+.pl-arrow { color: #D4AF37; font-size: 18px; padding: 14px 6px 0; flex-shrink: 0; }
+
+/* ── DIVIDER ── */
+.divider { display: flex; align-items: center; gap: 10px; margin: 8px 0 14px; }
+.divider .dline { flex: 1; height: 1px; background: #1e3a5f; }
+.divider .dtxt  { font-size: 10px; color: #D4AF37; font-weight: 600; white-space: nowrap; }
+
+/* ── CALLOUT NOTE ── */
+.note {
+  background: rgba(212,175,55,0.05); border: 1px solid rgba(212,175,55,0.15);
+  border-radius: 8px; padding: 8px 14px; font-size: 11px; color: #D4AF37; margin-top: 10px;
+}
+.rule-note {
+  background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.15);
+  border-radius: 8px; padding: 8px 14px; font-size: 11px; color: #f87171; margin-top: 8px;
+}
+
+/* ── STACK SUMMARY ── */
+.stack-summary { background: #132035; border: 1px solid #1e3a5f; border-radius: 18px; padding: 26px 30px; margin-top: 16px; }
+
+/* ── FOOTER ── */
+.footer { text-align: center; margin-top: 36px; color: #1e3a5f; font-size: 12px; }
+
+/* ── CONNECTOR WRAPPER (for 2-col layout alignment) ── */
+.connector-wrap {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 16px;
+}
+.connector-wrap .connector { align-items: center; }
+.connector-wrap .conn-spacer { /* empty right column */ }
+
+/* Phase number label on left edge */
+.phase-step-num {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background: #0a1628;
+  padding: 0 6px;
+  font-size: 10px;
+  color: #D4AF37;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<div class="header">
+  <div class="badge">GrowthSpree · US Market · 2026</div>
+  <h1>ABM Workflow — United States</h1>
+  <p>Signal-led · Multi-channel · HubSpot-native · Mid-Market B2B SaaS · 500–1,000 accounts / month · 2–5 SDRs</p>
+</div>
+
+
+<!-- ════════════════ PHASE 0 ════════════════ -->
+<div class="phase-wrap">
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num muted">0</div>
+      <div>
+        <div class="phase-title">ICP &amp; Tier Definition</div>
+        <div class="phase-sub">One-time setup · Reviewed quarterly · Every account that enters the workflow is bucketed here first</div>
+      </div>
+    </div>
+    <div class="phase-overview">
+      Before any outreach begins, every target company is assigned to one of three tiers based on how well it matches your ICP and how much intent it's showing. <strong>This tier determines how much human effort and spend is allocated to the account</strong> — Tier 1 gets full-touch treatment, Tier 3 gets automation only. Getting this right upfront stops SDRs from wasting effort on low-fit accounts and ensures your best accounts get the attention they deserve.
+    </div>
+    <div class="g3">
+      <div class="ic">
+        <div class="ic-label" style="color:#D4AF37;">Tier 1 · 1:1 ABM</div>
+        <div style="font-size:12px;color:#64748b;margin-bottom:8px;">50–100 accounts / month</div>
+        <div class="sp sp-hot" style="margin-bottom:10px;">Score 60+</div>
+        <div style="font-size:11px;color:#475569;line-height:1.7;">Full bespoke treatment<br>Ads + LinkedIn + Email + Direct Sales<br>AI research brief per account<br>AE looped in early</div>
+      </div>
+      <div class="ic">
+        <div class="ic-label" style="color:#60a5fa;">Tier 2 · 1:Few</div>
+        <div style="font-size:12px;color:#64748b;margin-bottom:8px;">200–400 accounts / month</div>
+        <div class="sp sp-cool" style="margin-bottom:10px;">Score 35–59</div>
+        <div style="font-size:11px;color:#475569;line-height:1.7;">Segment-personalised sequences<br>Semi-automated outreach<br>SDR-owned with templates<br>Escalate if score reaches 60+</div>
+      </div>
+      <div class="ic">
+        <div class="ic-label" style="color:#94a3b8;">Tier 3 · 1:Many</div>
+        <div style="font-size:12px;color:#64748b;margin-bottom:8px;">500+ accounts / month</div>
+        <div class="sp sp-cold" style="margin-bottom:10px;">Score &lt; 35</div>
+        <div style="font-size:11px;color:#475569;line-height:1.7;">Automated nurture only<br>No SDR time spent here<br>Retargeting ads keep brand visible<br>Escalate if intent spike +15 pts</div>
+      </div>
+    </div>
+  </div>
+  <div class="explain-box">
+    <div class="ex-title">💡 How to think about this</div>
+    <div class="explain-item">
+      <div class="ei-head">🎯 Why three tiers?</div>
+      <div class="ei-body">With 2–5 SDRs covering 500–1,000 accounts monthly, <em>you can't give every account the same level of effort.</em> Tier buckets enforce intentional resource allocation — high effort where it matters most.</div>
+    </div>
+    <hr class="explain-divider">
+    <div class="explain-item">
+      <div class="ei-head">📐 What defines Tier 1?</div>
+      <div class="ei-body">Strong ICP fit <em>plus</em> an active intent signal — not just company size. A $500M firm with no intent signals is Tier 2. A 200-person firm actively hiring a RevOps lead and visiting your pricing page is Tier 1.</div>
+    </div>
+    <hr class="explain-divider">
+    <div class="explain-item">
+      <div class="ei-head">🔄 Tiers are dynamic</div>
+      <div class="ei-body">Accounts move between tiers as their score changes. A Tier 3 account that attends your webinar can jump to Tier 2 or 1 automatically via HubSpot workflow rules.</div>
+    </div>
+    <div class="insight">
+      <div class="ins-label">⚡ Key Principle</div>
+      80% of SDR bandwidth should be spent on accounts scoring 60+. The score enforces this — it's not a suggestion, it's the queue order.
+    </div>
+  </div>
+</div>
+
+<!-- Arrow -->
+<div class="connector-wrap">
+  <div class="connector">
+    <div class="conn-line"></div>
+    <div class="conn-label">Weekly TAL construction begins → Phase 1 runs every Monday</div>
+    <div class="conn-head"></div>
+  </div>
+  <div class="conn-spacer"></div>
+</div>
+
+
+<!-- ════════════════ PHASE 1 ════════════════ -->
+<div class="phase-wrap">
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num">1</div>
+      <div>
+        <div class="phase-title">Data Collection &amp; List Building</div>
+        <div class="phase-sub">Weekly automated TAL construction · Clay pulls from all sources · 3–5 contacts prospected per account across the buying committee</div>
+      </div>
+    </div>
+    <div class="phase-overview">
+      Every week, a fresh batch of target accounts is built automatically by pulling from multiple data sources and running them through Clay for enrichment. <strong>The goal is not a big list — it's a precise list.</strong> Each account enters HubSpot already enriched with firmographics, tech stack, hiring signals, and 3–5 verified contacts representing the buying committee, not just one name.
+    </div>
+
+    <div class="sec-label">Data Sources — what each tool contributes</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
+      <div class="tool-block">
+        <div class="tools-row">
+          <div class="tool">
+            <img src="https://logo.clearbit.com/apollo.io" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+            <div class="fallback-icon" style="display:none;background:#e8613c;">Ap</div>
+            <span>Apollo.io</span>
+          </div>
+        </div>
+        <div class="tool-role">Firmographic filters: industry, headcount (50–500), geo, revenue range. <em>Produces the base account list.</em></div>
+      </div>
+      <div class="tool-block">
+        <div class="tools-row">
+          <div class="tool">
+            <img src="https://logo.clearbit.com/linkedin.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+            <div class="fallback-icon" style="display:none;background:#0a66c2;">Li</div>
+            <span>Sales Navigator</span>
+          </div>
+        </div>
+        <div class="tool-role">Hiring signals: accounts posting "VP Sales", "RevOps", "Head of Data" etc. Recent dept headcount growth. <em>These indicate a budget activation moment.</em></div>
+      </div>
+      <div class="tool-block">
+        <div class="tools-row">
+          <div class="tool">
+            <img src="https://logo.clearbit.com/crunchbase.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+            <div class="fallback-icon" style="display:none;background:#0288d1;">Cb</div>
+            <span>Crunchbase</span>
+          </div>
+          <div class="tool">
+            <img src="https://logo.clearbit.com/zoominfo.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+            <div class="fallback-icon" style="display:none;background:#00529B;">Zi</div>
+            <span>ZoomInfo</span>
+          </div>
+        </div>
+        <div class="tool-role">Funding events in the last 6 months (Series A/B/C = budget unlocked) and additional contact-level data for enrichment.</div>
+      </div>
+      <div class="tool-block">
+        <div class="tools-row">
+          <div class="tool">
+            <img src="https://logo.clearbit.com/rb2b.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+            <div class="fallback-icon" style="display:none;background:#7c3aed;">RB</div>
+            <span>RB2B</span>
+            <span class="tag-pill tag-new">Web ID</span>
+          </div>
+        </div>
+        <div class="tool-role">De-anonymises companies visiting your website. <em>These accounts are self-qualifying — they came to you first.</em> Automatically added to the Tier 1/2 list.</div>
+      </div>
+    </div>
+
+    <div class="divider">
+      <div class="dline"></div>
+      <div class="dtxt">▼ All sources unified and enriched via</div>
+      <div class="dline"></div>
+    </div>
+
+    <div class="tool-block">
+      <div class="tools-row">
+        <div class="tool accent" style="padding:8px 16px;">
+          <img src="https://logo.clearbit.com/clay.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+          <div class="fallback-icon" style="display:none;background:#7c3aed;">Cl</div>
+          <span style="font-weight:600;">Clay</span>
+          <span class="tag-pill tag-core">Orchestration Layer</span>
+        </div>
+      </div>
+      <div class="tool-role">Runs waterfall enrichment across all sources → verifies email addresses → identifies 3–5 buying committee contacts per account → pushes clean records to HubSpot Company objects. <em>This replaces manual list-building entirely.</em></div>
+    </div>
+  </div>
+
+  <div class="explain-box">
+    <div class="ex-title">💡 How to think about this</div>
+    <div class="explain-item">
+      <div class="ei-head">🏗️ Why Clay specifically?</div>
+      <div class="ei-body">You already have Apollo, Sales Nav, Crunchbase, and ZoomInfo. Clay is the <em>connective tissue</em> — it queries all of them in sequence (waterfall), takes the best result, and outputs one clean, enriched record. Without it, this is manual work every week.</div>
+    </div>
+    <hr class="explain-divider">
+    <div class="explain-item">
+      <div class="ei-head">👥 Why 3–5 contacts per account?</div>
+      <div class="ei-body">B2B mid-market deals involve 5–8 stakeholders. <em>Sending to one person is a single point of failure.</em> Prospecting the Economic Buyer + Champion + Technical Evaluator upfront means you can warm multiple people simultaneously.</div>
+    </div>
+    <hr class="explain-divider">
+    <div class="explain-item">
+      <div class="ei-head">🌐 RB2B is your secret source</div>
+      <div class="ei-body">Accounts visiting your site are already showing intent — they just haven't raised their hand. <em>These accounts skip to Tier 1/2 automatically</em> because the first intent signal came from them, not your outreach.</div>
+    </div>
+    <div class="insight">
+      <div class="ins-label">⚡ Output of this phase</div>
+      A clean, enriched, tiered account list lands in HubSpot every Monday morning — no manual work, ready for scoring.
+    </div>
+  </div>
+</div>
+
+<!-- Arrow -->
+<div class="connector-wrap">
+  <div class="connector">
+    <div class="conn-line"></div>
+    <div class="conn-label">Enriched accounts + contacts pushed to HubSpot → scoring begins</div>
+    <div class="conn-head"></div>
+  </div>
+  <div class="conn-spacer"></div>
+</div>
+
+
+<!-- ════════════════ PHASE 2 ════════════════ -->
+<div class="phase-wrap">
+  <div class="phase-card gold-border">
+    <div class="phase-header">
+      <div class="phase-num">2</div>
+      <div>
+        <div class="phase-title">AI Scoring Engine</div>
+        <div class="phase-sub">Runs weekly via n8n + Claude Cowork · Composite score (0–85) written to HubSpot · Tier auto-confirmed · AI research brief generated per Tier 1 account</div>
+      </div>
+    </div>
+    <div class="phase-overview">
+      This is the brain of the workflow. Every account gets a numeric score combining how well it fits your ICP with how much intent it's showing right now. <strong>The score — not a human's gut-feel — determines which tier an account is assigned to and therefore what happens next.</strong> An n8n automation reads the enriched data, Claude Cowork analyses the signals intelligently, and the result is written back to HubSpot so SDRs see a single ranked list when they open their queue.
+    </div>
+
+    <div class="g2" style="margin-bottom:16px;">
+      <div>
+        <div class="sec-label">Scoring Engine Stack</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="tool-block">
+            <div class="tools-row">
+              <div class="tool accent">
+                <img src="https://logo.clearbit.com/n8n.io" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+                <div class="fallback-icon" style="display:none;background:#ea4b71;">n8</div>
+                <span>n8n</span>
+                <span class="tag-pill tag-orch">Automation</span>
+              </div>
+            </div>
+            <div class="tool-role">Orchestrates the weekly scoring run. Pulls company records from HubSpot, queries enrichment APIs, and fires the Claude analysis workflow.</div>
+          </div>
+          <div class="tool-block">
+            <div class="tools-row">
+              <div class="tool accent">
+                <div class="fallback-icon" style="display:flex;background:#D4AF37;color:#0a1628;">AI</div>
+                <span>Claude Cowork</span>
+                <span class="tag-pill tag-orch">AI Layer</span>
+              </div>
+            </div>
+            <div class="tool-role">Analyses the enriched data to detect nuanced signals: does a new hire suggest a buying window? Does their job description language signal a pain point you solve? Generates a 2–3 sentence SDR brief per Tier 1 account.</div>
+          </div>
+          <div class="tool-block">
+            <div class="tools-row">
+              <div class="tool">
+                <img src="https://logo.clearbit.com/hubspot.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+                <div class="fallback-icon" style="display:none;background:#FF7A59;">HS</div>
+                <span>HubSpot</span>
+                <span class="tag-pill tag-core">Score Written Here</span>
+              </div>
+            </div>
+            <div class="tool-role">Receives the final composite score, updates the company record, fires tier-assignment workflows, and refreshes the SDR priority queue view.</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-label">Score → Tier Output</div>
+        <div class="band-row">
+          <div class="band"><span class="band-name">Tier 1 — Full ABM</span><div class="band-detail">Ads + outreach + sales</div><span class="sp sp-hot">60+</span></div>
+          <div class="band"><span class="band-name">Tier 2 — Semi ABM</span><div class="band-detail">Sequences + SDR-assisted</div><span class="sp sp-cool">35–59</span></div>
+          <div class="band"><span class="band-name">Tier 3 — Nurture</span><div class="band-detail">Automation only</div><span class="sp sp-cold">&lt;35</span></div>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:#334155;line-height:1.7;padding:10px;background:#0a1628;border-radius:8px;border:1px solid #1e3a5f;">
+          Score velocity alert: if an account's score rises <strong style="color:#D4AF37;">+20 points within 7 days</strong>, an instant SDR alert fires regardless of absolute score — this signals a buying window opening right now.
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-label">Scoring Model — what gets measured and why</div>
+    <table class="score-tbl">
+      <thead>
+        <tr>
+          <th>Signal</th>
+          <th>Max Pts</th>
+          <th>Source</th>
+          <th>Why it's included</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Firmographic Fit (size, industry, geo, revenue)</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:44px;"></div><span class="pts-val">20</span></div></td>
+          <td style="color:#334155;">Apollo / Clay</td>
+          <td style="color:#334155;font-size:11px;">Baseline ICP match — is this even a company we can sell to?</td>
+        </tr>
+        <tr>
+          <td>Technographic Fit (stack alignment with your solution)</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:22px;"></div><span class="pts-val">10</span></div></td>
+          <td style="color:#334155;">Clay / Clearbit</td>
+          <td style="color:#334155;font-size:11px;">Are they running tools your product integrates with or replaces? Signals readiness.</td>
+        </tr>
+        <tr>
+          <td>Hiring Signals (relevant roles currently posted)</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:33px;"></div><span class="pts-val">15</span></div></td>
+          <td style="color:#334155;">Sales Navigator</td>
+          <td style="color:#334155;font-size:11px;">A new hire in the relevant function = budget unlocked + a problem being actively addressed.</td>
+        </tr>
+        <tr>
+          <td>Funding Signal (raised capital in last 6 months)</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:22px;"></div><span class="pts-val">10</span></div></td>
+          <td style="color:#334155;">Crunchbase</td>
+          <td style="color:#334155;font-size:11px;">Post-funding = growth mode = new tool budgets. One of the strongest buying-moment signals.</td>
+        </tr>
+        <tr>
+          <td>3rd-Party Intent (actively researching your category)</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:44px;"></div><span class="pts-val">20</span></div></td>
+          <td style="color:#334155;">Sales Nav / G2</td>
+          <td style="color:#334155;font-size:11px;">They're in-market right now. Teams acting on this within 24 hours see 29% more opportunities.</td>
+        </tr>
+        <tr>
+          <td>Web Visit — RB2B identifies the company</td>
+          <td><div class="bar-wrap"><div class="bar" style="width:22px;"></div><span class="pts-val">10</span></div></td>
+          <td style="color:#334155;">RB2B</td>
+          <td style="color:#334155;font-size:11px;">First-party intent — they found you and visited. Self-qualification is the strongest signal.</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="tbl-note" style="margin-top:8px;font-size:10px;color:#334155;padding:0 4px;">* This is the initial ICP Fit + Intent score (max 85). The account's running score grows further as engagement and sales activities are added in Phases 5 and 6.</div>
+  </div>
+
+  <div class="explain-box">
+    <div class="ex-title">💡 How to think about this</div>
+    <div class="explain-item">
+      <div class="ei-head">🤖 Why AI scoring vs manual?</div>
+      <div class="ei-body">Manual scoring is done once and forgotten. <em>AI scoring re-evaluates every account weekly</em>, catches new hiring signals, updates tier assignments automatically, and surfaces accounts that have moved into a buying window since last week.</div>
+    </div>
+    <hr class="explain-divider">
+    <div class="explain-item">
+      <div class="ei-head">📝 The SDR Brief — what it does</div>
+      <div class="ei-body">For every account that enters Tier 1, Claude generates a short note: what signal triggered the escalation, which contact to start with, and the most relevant hook for outreach. <em>SDRs see this in HubSpot as a company note</em> — they don't need to do manual research before reaching out.</div>
+    </div>
+    <hr class="explain-divider">
+    <div class="explain-item">
+      <div class="ei-head">⚡ Score velocity vs absolute score</div>
+      <div class="ei-body">An account at score 55 that jumps 25 points in 7 days is often more urgent than one sitting at 80 with no recent movement. <em>Velocity signals an open buying window — act immediately.</em></div>
+    </div>
+    <div class="insight">
+      <div class="ins-label">⚡ Output of this phase</div>
+      Every account in HubSpot has a live score. SDRs open their queue and see accounts ranked by priority — no more guessing who to call first.
+    </div>
+  </div>
+</div>
+
+<!-- Arrow -->
+<div class="connector-wrap">
+  <div class="connector">
+    <div class="conn-line"></div>
+    <div class="conn-label">Tier assignment fires activation path → Tier 1/2 enter warming · Tier 3 enters nurture</div>
+    <div class="conn-head"></div>
+  </div>
+  <div class="conn-spacer"></div>
+</div>
+
+
+<!-- ════════════════ PHASE 3 ════════════════ -->
+<div class="phase-wrap">
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num">3</div>
+      <div>
+        <div class="phase-title">Warming Phase — Pre-Outreach Only</div>
+        <div class="phase-sub">2–3 weeks for Tier 1 · 1–2 weeks for Tier 2 · Outreach is unlocked only after minimum warming threshold met</div>
+      </div>
+    </div>
+    <div class="phase-overview">
+      The single most common ABM mistake is going straight to outreach on cold accounts. This phase runs <strong>before a single email or LinkedIn DM is sent</strong>. Buying committee members at your target accounts are shown a 3-stage sequence of LinkedIn ads — building name recognition first, then relevance, then a soft nudge. When the SDR's connection request finally lands, it's not cold. The prospect has already seen your content multiple times.
+    </div>
+
+    <div class="g2">
+      <div>
+        <div class="sec-label" style="margin-bottom:10px;"><span class="t1">TIER 1 + 2</span> &nbsp; LinkedIn Ad Sequence</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
+          <div class="tool-block">
+            <div class="tools-row">
+              <div class="tool">
+                <img src="https://logo.clearbit.com/linkedin.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+                <div class="fallback-icon" style="display:none;background:#0a66c2;">Li</div>
+                <span>LinkedIn Campaign Manager</span>
+              </div>
+            </div>
+            <div class="tool-role">Upload account list as Matched Company Audience. Serve ads specifically to the buying committee contacts identified in Phase 1. Cap at 3–5 impressions per account per week to avoid fatigue.</div>
+          </div>
+          <div class="tool-block">
+            <div class="tools-row">
+              <div class="tool">
+                <img src="https://logo.clearbit.com/factors.ai" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+                <div class="fallback-icon" style="display:none;background:#0ea5e9;">Fa</div>
+                <span>Factors.ai</span>
+              </div>
+            </div>
+            <div class="tool-role">Tracks ad engagement at account level. Any click or engagement is synced to HubSpot and adds to the account's engagement score (+5–15 pts).</div>
+          </div>
+        </div>
+        <div class="week-row">
+          <div class="wk">
+            <div class="wk-num">Week 1</div>
+            <div class="wk-type">TOFU — Educate</div>
+            <div class="wk-desc">Benchmarks · Expert video · Industry insight posts</div>
+            <div class="wk-why">Goal: make them aware your brand exists. No CTA. Build familiarity.</div>
+          </div>
+          <div class="wk">
+            <div class="wk-num">Week 2</div>
+            <div class="wk-type">MOFU — Engage</div>
+            <div class="wk-desc">Case studies · Frameworks · Competitor comparisons</div>
+            <div class="wk-why">Goal: show them you understand their problem. Build relevance.</div>
+          </div>
+          <div class="wk">
+            <div class="wk-num">Week 3</div>
+            <div class="wk-type">BOFU — Nudge</div>
+            <div class="wk-desc">ROI stat · Segment-specific headline · Soft CTA to ungated resource</div>
+            <div class="wk-why">Goal: create enough context that the SDR's outreach feels warm, not cold.</div>
+          </div>
+        </div>
+        <div class="note">⚡ After minimum warming (50+ impressions delivered OR 1 ad engagement), outreach sequences for this account are unlocked in Dripify + Instantly</div>
+      </div>
+
+      <div>
+        <div class="sec-label" style="margin-bottom:10px;"><span class="t3">TIER 3</span> &nbsp; Automated Nurture Only</div>
+        <div class="ic" style="margin-bottom:12px;">
+          <div style="font-size:12px;color:#64748b;line-height:1.8;">
+            Automated email nurture sequence<br>
+            No LinkedIn DMs · No SDR calling time<br>
+            Retargeting ads keep brand visible<br>
+            <strong style="color:#f1f5f9;">Auto-escalate to Tier 2</strong> when score rises 15+ points — e.g. if they attend a webinar or visit your pricing page
+          </div>
+        </div>
+
+        <div class="sec-label" style="margin-bottom:8px;">SDR Organic Activity (runs in parallel for Tier 1)</div>
+        <div class="ic">
+          <div style="font-size:12px;color:#64748b;line-height:1.8;margin-bottom:8px;">
+            SDR/AE assigned to the account comments on the prospect's LinkedIn posts, shares relevant industry content, and follows key contacts. <strong style="color:#f1f5f9;">10–15 mins/day per Tier 1 account.</strong>
+          </div>
+          <div style="font-size:10px;color:#334155;line-height:1.6;">Why: creates organic visibility at zero ad cost. When the connection request lands, the name is already familiar — not a stranger in their inbox.</div>
+        </div>
+        <div class="rule-note">🚫 Hard rule: No SDR email or LinkedIn DM is sent to any account that hasn't received minimum ad warming. This protects your sender reputation and improves reply rates.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="explain-box">
+    <div class="ex-title">💡 How to think about this</div>
+    <div class="explain-item">
+      <div class="ei-head">🔥 Why warm before outreach?</div>
+      <div class="ei-body">Cold outreach to an unwarmed account has a 1–3% reply rate. The same message to an account that's already seen 3 weeks of your content gets <em>2–4x higher reply rates</em>. The warming phase is what makes the outreach phase work.</div>
+    </div>
+    <hr class="explain-divider">
+    <div class="explain-item">
+      <div class="ei-head">📢 TOFU → MOFU → BOFU logic</div>
+      <div class="ei-body">You don't lead with a pitch. Week 1 is pure education — you're not even asking for anything. Week 2 shows you understand their world. Week 3 introduces a very light CTA. <em>By the time the SDR reaches out, they've seen your thinking 3 times already.</em></div>
+    </div>
+    <hr class="explain-divider">
+    <div class="explain-item">
+      <div class="ei-head">📊 Impression cap — why it matters</div>
+      <div class="ei-body">3–5 impressions per account per week pushes account reach from the typical 10–15% of the buying committee to <em>80–90%</em> — meaning most stakeholders in the account see your ad before anyone is contacted.</div>
+    </div>
+    <div class="insight">
+      <div class="ins-label">⚡ Output of this phase</div>
+      Outreach sequences are unlocked per account — only after warming threshold is confirmed. HubSpot workflow enforces this automatically.
+    </div>
+  </div>
+</div>
+
+<!-- Arrow -->
+<div class="connector-wrap">
+  <div class="connector">
+    <div class="conn-line"></div>
+    <div class="conn-label">Warming threshold confirmed → multi-channel outreach sequences activated</div>
+    <div class="conn-head"></div>
+  </div>
+  <div class="conn-spacer"></div>
+</div>
+
+
+<!-- ════════════════ PHASE 4 ════════════════ -->
+<div class="phase-wrap">
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num">4</div>
+      <div>
+        <div class="phase-title">Multi-Channel Outreach</div>
+        <div class="phase-sub">3 channels coordinated · Staggered 3–5 days apart · No pitch before establishing context · Every reply logged in HubSpot and updates account score</div>
+      </div>
+    </div>
+    <div class="phase-overview">
+      Outreach runs across LinkedIn, email, and phone in a <strong>coordinated, staggered sequence</strong> — not simultaneously. The logic is simple: LinkedIn builds the human relationship, email provides context and a clear ask, and calling is reserved for accounts already showing strong engagement signals. Each channel knows what the others are doing. An SDR never leads with a call to a cold account. A connection request is never sent without a warming period behind it.
+    </div>
+
+    <div class="g3">
+      <!-- LinkedIn -->
+      <div class="ic">
+        <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;">
+          <span class="ch ch-li">🔗 LinkedIn</span>
+          <div class="tool" style="padding:4px 8px;">
+            <img src="https://logo.clearbit.com/dripify.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+            <div class="fallback-icon" style="display:none;background:#2563eb;">Dr</div>
+            <span style="font-size:11px;">Dripify</span>
+          </div>
+        </div>
+        <div class="seq-step">
+          <span class="day">Day 1</span> <span class="action">→ Connection request</span><br>
+          <span class="why">Personalised note referencing a specific signal — their recent hire, a post they wrote, or a pain point visible in their job descriptions.</span><br><br>
+          <span class="day">Day 4</span> <span class="action">→ Warm acknowledgement</span><br>
+          <span class="why">No pitch. Reference shared context. Ask a genuine question about their work.</span><br><br>
+          <span class="day">Day 10</span> <span class="action">→ Value share</span><br>
+          <span class="why">Send a relevant case study or insight that solves a pain they're likely experiencing. No ask yet.</span><br><br>
+          <span class="day">Day 18</span> <span class="action">→ Soft CTA</span><br>
+          <span class="why">Brief, specific, low-friction ask. One sentence. "Would it make sense to explore X for your team?"</span><br><br>
+          <span class="day">Day 25</span> <span class="action">→ Follow-up or handoff to email</span>
+        </div>
+        <div class="rule-note" style="margin-top:10px;">🚫 No pitch in the first 3 messages — builds relationship before asking for attention</div>
+      </div>
+
+      <!-- Email -->
+      <div class="ic">
+        <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:6px;">
+          <span class="ch ch-em">✉️ Email</span>
+          <div style="display:flex;gap:4px;">
+            <div class="tool" style="padding:4px 8px;">
+              <img src="https://logo.clearbit.com/instantly.ai" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+              <div class="fallback-icon" style="display:none;background:#6366f1;">In</div>
+              <span style="font-size:11px;">Instantly</span>
+            </div>
+            <div class="tool" style="padding:4px 8px;">
+              <img src="https://logo.clearbit.com/lemlist.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+              <div class="fallback-icon" style="display:none;background:#f97316;">Le</div>
+              <span style="font-size:11px;">Lemlist</span>
+            </div>
+          </div>
+        </div>
+        <div class="seq-step">
+          <span class="day">Email 1</span> <span class="action">→ Signal-personalised opener</span><br>
+          <span class="why">References a specific signal: "Noticed you're hiring a RevOps lead — that usually means X is on the priority list." No pitch. Ends with one question.</span><br><br>
+          <span class="day">Email 2</span> <span class="action">(+4 days) → Value add</span><br>
+          <span class="why">Attach a relevant benchmark, case study, or short insight specific to their industry. Show you did your homework.</span><br><br>
+          <span class="day">Email 3</span> <span class="action">(+5 days) → Specific CTA</span><br>
+          <span class="why">Under 100 words. One clear, low-friction ask. No attachments. No long pitch.</span><br><br>
+          <span class="day">Email 4</span> <span class="action">(+7 days) → Break-up</span><br>
+          <span class="why">Honest and brief. Leaves the door open — "If timing changes, I'm here." Keeps relationship intact.</span>
+        </div>
+        <div class="note" style="margin-top:10px;">Emails are staggered 3–5 days from LinkedIn touches so the prospect sees both channels without feeling like they're being automated at</div>
+      </div>
+
+      <!-- Calling -->
+      <div class="ic">
+        <div style="margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;">
+          <span class="ch ch-call">📞 Calling</span>
+          <div class="tool" style="padding:4px 8px;">
+            <img src="https://logo.clearbit.com/hubspot.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+            <div class="fallback-icon" style="display:none;background:#FF7A59;">HS</div>
+            <span style="font-size:11px;">HubSpot Calling</span>
+          </div>
+        </div>
+        <div class="seq-step">
+          <span class="day">Trigger</span> <span class="action">→ Account score 70+ AND 2 LinkedIn touches + 1 email already sent</span><br>
+          <span class="why">Calling cold without prior digital touches is a wasted dial. The call lands in a warm context — they've seen your name on LinkedIn and in their inbox already.</span><br><br>
+          <span class="day">Full sequence:</span><br>
+          <span class="why">LI connect → LI message → Email 1 → <strong style="color:#c084fc;">CALL 1</strong> → Email 2 → <strong style="color:#c084fc;">CALL 2</strong> → Email 3 → LI follow-up</span><br><br>
+          <span class="day">Voicemail:</span><br>
+          <span class="why">Always references prior context: "I sent you a message on LinkedIn about X — wanted to follow up directly." Keeps the thread cohesive across channels.</span>
+        </div>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #1e3a5f;font-size:10px;color:#334155;line-height:1.6;">
+          All calls logged in HubSpot with outcome (Connected / VM / No Answer). This is mandatory — it feeds the account's engagement score and appears in the priority queue.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="explain-box">
+    <div class="ex-title">💡 How to think about this</div>
+    <div class="explain-item">
+      <div class="ei-head">🔀 Why coordinate channels?</div>
+      <div class="ei-body">A prospect who receives a LinkedIn connection, sees your ad, and gets an email referencing the same context experiences a <em>coordinated brand touchpoint</em>, not three random cold contacts. It feels like you've done your homework, not like a spray-and-pray campaign.</div>
+    </div>
+    <hr class="explain-divider">
+    <div class="explain-item">
+      <div class="ei-head">🎯 Signal-personalised opener</div>
+      <div class="ei-body">Email 1 is not a template — it's triggered by a specific signal: a new job posting, a funding round, a recent LinkedIn post, or a web visit. <em>The hook comes from data, not from generic copy.</em> This is what Clay + Claude Cowork enables at scale.</div>
+    </div>
+    <hr class="explain-divider">
+    <div class="explain-item">
+      <div class="ei-head">📞 Why call last, not first?</div>
+      <div class="ei-body">Cold calling without prior context has a &lt;2% connect-to-conversation rate. <em>Calling after 2 LinkedIn touches + 1 email boosts this to 8–12%</em> because the prospect has already encountered you and may even be expecting the call.</div>
+    </div>
+    <div class="insight">
+      <div class="ins-label">⚡ Output of this phase</div>
+      Every reply — positive, negative, or neutral — is logged in HubSpot and adds to the account score. Replies are the first buying signal from the account itself.
+    </div>
+  </div>
+</div>
+
+<!-- Arrow -->
+<div class="connector-wrap">
+  <div class="connector">
+    <div class="conn-line"></div>
+    <div class="conn-label">All outreach replies + engagement → HubSpot engagement score updated in real-time</div>
+    <div class="conn-head"></div>
+  </div>
+  <div class="conn-spacer"></div>
+</div>
+
+
+<!-- ════════════════ PHASE 5 ════════════════ -->
+<div class="phase-wrap">
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num">5</div>
+      <div>
+        <div class="phase-title">Signal Capture — Events, Webinars &amp; Content</div>
+        <div class="phase-sub">Every marketing touchpoint feeds the account score · Built on Zapier / n8n → HubSpot · This is the green-field build — none of this is captured today</div>
+      </div>
+    </div>
+    <div class="phase-overview">
+      This phase treats every marketing activity — a webinar, a meetup, a content download, a pricing page visit — as a <strong>scored intent signal that gets written back to the account record in HubSpot</strong>. Today you're running these activities but the signals aren't being captured or scored. This phase fixes that. When a prospect attends your webinar, their account score jumps automatically and their SDR gets a notification. Nothing falls through the cracks.
+    </div>
+
+    <div class="g2">
+      <div>
+        <div class="sec-label">🏢 Event &amp; Webinar Signals — captured via Zapier/n8n</div>
+        <div class="sig-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div class="sig-item">
+            <div class="sig-icon">📋</div>
+            <div class="sig-name">Webinar<br>Registration</div>
+            <div class="sig-pts">+5 pts</div>
+            <div class="sig-why">Raised hand — showed enough interest to sign up</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-icon">🎧</div>
+            <div class="sig-name">Webinar<br>Attended</div>
+            <div class="sig-pts">+10 pts</div>
+            <div class="sig-why">Confirmed interest — sat through your content</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-icon">✋</div>
+            <div class="sig-name">Q&amp;A<br>Engaged</div>
+            <div class="sig-pts">+15 pts</div>
+            <div class="sig-why">High intent — asked a question relevant to their situation</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-icon">🏢</div>
+            <div class="sig-name">Event<br>Attended</div>
+            <div class="sig-pts">+15 pts</div>
+            <div class="sig-why">Made effort to show up in person — strong signal</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-icon">🤝</div>
+            <div class="sig-name">Met SDR/AE<br>at Event</div>
+            <div class="sig-pts">+20 pts</div>
+            <div class="sig-why">Personal conversation held — move to active outreach immediately</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-icon">🎤</div>
+            <div class="sig-name">Exec<br>Roundtable</div>
+            <div class="sig-pts">+25 pts</div>
+            <div class="sig-why">Highest-quality signal — committed time in intimate setting</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-label">🌐 Digital &amp; Content Signals — via RB2B + Factors.ai + HubSpot forms</div>
+        <div class="sig-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div class="sig-item">
+            <div class="sig-icon">🌐</div>
+            <div class="sig-name">Anonymous<br>Web Visit</div>
+            <div class="sig-pts">+5 pts</div>
+            <div class="sig-why">RB2B identifies the company — they found you</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-icon">💰</div>
+            <div class="sig-name">Pricing Page<br>Visit</div>
+            <div class="sig-pts">+10 pts</div>
+            <div class="sig-why">Evaluating cost = late-stage intent — SDR notified immediately</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-icon">📥</div>
+            <div class="sig-name">Gated Asset<br>Download</div>
+            <div class="sig-pts">+15 pts</div>
+            <div class="sig-why">Gave you their email in exchange for content — high-value signal</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-icon">📊</div>
+            <div class="sig-name">LinkedIn<br>Ad Click</div>
+            <div class="sig-pts">+5 pts</div>
+            <div class="sig-why">Engaged with warming content — warming phase working</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-icon">💬</div>
+            <div class="sig-name">LinkedIn<br>Post Engaged</div>
+            <div class="sig-pts">+5 pts</div>
+            <div class="sig-why">Organic engagement — building relationship pre-outreach</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-icon">📬</div>
+            <div class="sig-name">Email<br>Reply (any)</div>
+            <div class="sig-pts">+5 pts</div>
+            <div class="sig-why">Even a "not now" reply is a signal — they read it and responded</div>
+          </div>
+        </div>
+        <div class="sec-label" style="margin-top:14px;">Integration stack — how signals flow to HubSpot</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="tool-block">
+            <div class="tools-row">
+              <div class="tool"><img src="https://logo.clearbit.com/zapier.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#FF4A00;">Za</div><span>Zapier</span></div>
+              <div class="tool accent"><img src="https://logo.clearbit.com/n8n.io" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#ea4b71;">n8</div><span>n8n</span></div>
+            </div>
+            <div class="tool-role">Webhooks from Zoom/Luma (webinar attendance), Eventbrite (event check-ins), and form fills → HubSpot activity logged + score incremented.</div>
+          </div>
+          <div class="tool-block">
+            <div class="tools-row">
+              <div class="tool"><img src="https://logo.clearbit.com/factors.ai" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#0ea5e9;">Fa</div><span>Factors.ai</span></div>
+              <div class="tool accent"><img src="https://logo.clearbit.com/hubspot.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#FF7A59;">HS</div><span>HubSpot</span><span class="tag-pill tag-core">Score Updated</span></div>
+            </div>
+            <div class="tool-role">Factors.ai tracks all account-level web and ad engagement, syncs to HubSpot. Every signal becomes a scored data point — not a vanity metric.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="explain-box">
+    <div class="ex-title">💡 How to think about this</div>
+    <div class="explain-item">
+      <div class="ei-head">🔌 Why this is the green-field build</div>
+      <div class="ei-body">You're already running webinars and events. You're just not capturing the signals from them into HubSpot. <em>This phase is the infrastructure build</em> — once the Zapier/n8n webhooks are set up, every future event automatically feeds the scoring system.</div>
+    </div>
+    <hr class="explain-divider">
+    <div class="explain-item">
+      <div class="ei-head">📣 The Q&amp;A signal</div>
+      <div class="ei-body">Someone who asks a question in your webinar has already mentally placed themselves in the context of your solution. <em>Their SDR should be notified within minutes</em>, not discovered in a spreadsheet export a week later.</div>
+    </div>
+    <hr class="explain-divider">
+    <div class="explain-item">
+      <div class="ei-head">💰 Pricing page = late-stage intent</div>
+      <div class="ei-body">A known contact visiting your pricing page is one of the strongest buying signals that exists. <em>This fires an immediate SDR task in HubSpot</em> — "Reach out within 24 hours — [Company] just visited pricing."</div>
+    </div>
+    <div class="insight">
+      <div class="ins-label">⚡ Output of this phase</div>
+      Every marketing activity now contributes a score point. Accounts that engage with your events or content rise in the priority queue automatically, with no manual intervention.
+    </div>
+  </div>
+</div>
+
+<!-- Arrow -->
+<div class="connector-wrap">
+  <div class="connector">
+    <div class="conn-line"></div>
+    <div class="conn-label">All signals merged into running ABM score → priority queue refreshed</div>
+    <div class="conn-head"></div>
+  </div>
+  <div class="conn-spacer"></div>
+</div>
+
+
+<!-- ════════════════ PHASE 6 ════════════════ -->
+<div class="phase-wrap">
+  <div class="phase-card gold-border">
+    <div class="phase-header">
+      <div class="phase-num">6</div>
+      <div>
+        <div class="phase-title">Sales Activity Capture + Priority Queue + Handoff SLAs</div>
+        <div class="phase-sub">Every call, email, meeting logged in HubSpot · Score updates automatically · HubSpot surfaces ranked daily queue · SLA rules trigger handoffs without manual management</div>
+      </div>
+    </div>
+    <div class="phase-overview">
+      This is where the scoring system meets sales execution. <strong>Every sales touchpoint — a call, a reply, a meeting — contributes to the running account score.</strong> HubSpot then surfaces a single ranked list for SDRs every morning: the accounts most likely to convert, sorted by score. When an account crosses a threshold, HubSpot automatically creates a task, assigns it to the right person, and fires a Slack notification — all without a manager needing to intervene.
+    </div>
+
+    <div class="g2" style="margin-bottom:16px;">
+      <div>
+        <div class="sec-label">Sales Activities → Score Contributions</div>
+        <div class="sig-grid" style="grid-template-columns:repeat(2,1fr);">
+          <div class="sig-item">
+            <div class="sig-name">Positive Email Reply</div>
+            <div class="sig-pts">+15 pts</div>
+            <div class="sig-why">Interest expressed in writing — strong buying signal</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-name">LinkedIn Positive Reply</div>
+            <div class="sig-pts">+15 pts</div>
+            <div class="sig-why">Engaged in the channel where they chose to respond</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-name">Call Connected</div>
+            <div class="sig-pts">+8 pts</div>
+            <div class="sig-why">Live conversation held — even if outcome was neutral</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-name">Meeting Booked</div>
+            <div class="sig-pts">+25 pts</div>
+            <div class="sig-why">Calendar commitment = significant intent signal</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-name">Discovery / Demo Held</div>
+            <div class="sig-pts">+30 pts</div>
+            <div class="sig-why">Entered active evaluation — deal should exist in HubSpot now</div>
+          </div>
+          <div class="sig-item">
+            <div class="sig-name">Pricing / Proposal Requested</div>
+            <div class="sig-pts">+20 pts</div>
+            <div class="sig-why">Late-stage intent — escalate to AE immediately</div>
+          </div>
+        </div>
+        <div style="margin-top:10px;padding:10px;background:#0a1628;border:1px solid #1e3a5f;border-radius:8px;font-size:11px;color:#334155;line-height:1.6;">
+          <strong style="color:#f1f5f9;">Mandatory logging rule:</strong> Every call outcome (Connected / VM / No Answer), every reply, and every meeting must be logged in HubSpot. If it's not in HubSpot, it didn't happen for scoring purposes — and the priority queue breaks.
+        </div>
+      </div>
+      <div>
+        <div class="sec-label">HubSpot Priority Queue — Daily SDR View</div>
+        <div class="band-row">
+          <div class="band">
+            <span class="band-name">Identified</span>
+            <div class="band-detail">Ads only, no outreach yet</div>
+            <span class="sp sp-cold">0–34</span>
+          </div>
+          <div class="band">
+            <span class="band-name">Warming</span>
+            <div class="band-detail">Sequence active, building context</div>
+            <span class="sp sp-cool">35–59</span>
+          </div>
+          <div class="band">
+            <span class="band-name">Engaged</span>
+            <div class="band-detail">SDR works this list daily</div>
+            <span class="sp sp-warm">60–89</span>
+          </div>
+          <div class="band">
+            <span class="band-name">High Intent</span>
+            <div class="band-detail">Contact within 24 hours</div>
+            <span class="sp sp-hot">90–119</span>
+          </div>
+          <div class="band fire">
+            <span class="band-name">🔥 Sales Priority / MQL</span>
+            <div class="band-detail">AE handoff triggered</div>
+            <span class="sp sp-gold">120+</span>
+          </div>
+        </div>
+        <div style="margin-top:10px;padding:10px;background:#0a1628;border:1px solid #1e3a5f;border-radius:8px;font-size:11px;color:#334155;line-height:1.6;">
+          SDRs open HubSpot each morning and work top-to-bottom. The queue is re-ranked overnight. Accounts that scored higher since yesterday move up. No spreadsheets. No manager briefings. The system tells you who to call.
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-label">Handoff SLAs — Auto-triggered via HubSpot Workflows + Zapier → Slack</div>
+    <div class="sla-row">
+      <div class="sla-box red">
+        <div class="sla-title">🔴 Score 120+ — MQL Threshold</div>
+        <div class="sla-detail">AE task auto-created in HubSpot · Account review + discovery booking required within <em>48 hours</em> · Slack channel alert fired · Deal record created automatically</div>
+        <div class="sla-rationale">Why 48h: AE needs time to review the full account history and context before the first call. The brief from Phase 2 is already in HubSpot.</div>
+      </div>
+      <div class="sla-box amber">
+        <div class="sla-title">🟡 Score 90–119 — High Intent</div>
+        <div class="sla-detail">SDR task auto-created · First outreach touchpoint required within <em>24 hours</em> of threshold breach · Teams acting on intent within 24h see 29% more opportunities</div>
+        <div class="sla-rationale">Why 24h: the buying window that caused the score spike is open right now — a day of delay can mean missing it entirely.</div>
+      </div>
+      <div class="sla-box purple">
+        <div class="sla-title">⚡ Score Velocity +20 in 7 days</div>
+        <div class="sla-detail">Instant alert regardless of absolute score · Signals a buying window opening rapidly · Treat as High Intent regardless of band · Prioritise immediately</div>
+        <div class="sla-rationale">Why velocity matters: a score of 55 that's rising fast is more urgent than a score of 80 that's been flat for 3 weeks.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="explain-box">
+    <div class="ex-title">💡 How to think about this</div>
+    <div class="explain-item">
+      <div class="ei-head">📋 The priority queue is the product</div>
+      <div class="ei-body">Everything in the workflow — the data collection, the scoring, the signal capture — exists to produce one thing: <em>a ranked list of accounts that tells SDRs exactly who to contact today and in what order.</em> This is the output that makes everything else worth building.</div>
+    </div>
+    <hr class="explain-divider">
+    <div class="explain-item">
+      <div class="ei-head">🔒 Why mandatory logging?</div>
+      <div class="ei-body">If SDRs don't log calls and meetings in HubSpot, the score is wrong. A wrong score means the priority queue is wrong. <em>One person skipping logging breaks the system for the whole team.</em> This must be a non-negotiable protocol enforced from day one.</div>
+    </div>
+    <hr class="explain-divider">
+    <div class="explain-item">
+      <div class="ei-head">🤝 SLAs replace manual management</div>
+      <div class="ei-body">Without SLAs, a hot account sits in the queue for 3 days because nobody noticed the score moved. <em>SLAs turn the CRM into a self-managing system</em> — the right person gets a task and a Slack ping the moment the threshold is crossed.</div>
+    </div>
+    <div class="insight">
+      <div class="ins-label">⚡ Output of this phase</div>
+      Every account above 90 has an active HubSpot task assigned. No hot lead sits uncontacted. The priority queue runs the team's day — not intuition, not a spreadsheet.
+    </div>
+  </div>
+</div>
+
+<!-- Arrow -->
+<div class="connector-wrap">
+  <div class="connector">
+    <div class="conn-line"></div>
+    <div class="conn-label">MQL (120+) → AE handoff → Deal record created in HubSpot</div>
+    <div class="conn-head"></div>
+  </div>
+  <div class="conn-spacer"></div>
+</div>
+
+
+<!-- ════════════════ PHASE 7 ════════════════ -->
+<div class="phase-wrap full">
+  <div class="phase-card">
+    <div class="phase-header">
+      <div class="phase-num">7</div>
+      <div>
+        <div class="phase-title">Pipeline &amp; Deal Progression</div>
+        <div class="phase-sub">HubSpot deal stages · AE-owned · ABM score continues updating throughout the deal cycle · Factors.ai attributes pipeline back to ABM touchpoints</div>
+      </div>
+    </div>
+    <div class="phase-overview">
+      Once an account becomes an MQL and a deal is created in HubSpot, the ABM score doesn't stop — it continues tracking engagement throughout the deal cycle. <strong>An AE who can see which stakeholders are engaging, which pages they're revisiting, and how the account score is trending can prioritise their deal effort intelligently.</strong> Factors.ai provides the attribution layer that proves, at the end of each quarter, exactly how much pipeline the ABM workflow created and which channels drove the most influence.
+    </div>
+
+    <div class="pipeline">
+      <div class="pl-stage start">
+        <div class="pl-name">🔥 MQL</div>
+        <div class="stage-sub">Score 120+</div>
+        <div class="stage-note">Deal created by workflow</div>
+      </div>
+      <div class="pl-arrow">→</div>
+      <div class="pl-stage">
+        <div class="pl-name">Discovery Booked</div>
+        <div class="stage-sub">AE assigned · Task created</div>
+        <div class="stage-note">48h SLA from MQL</div>
+      </div>
+      <div class="pl-arrow">→</div>
+      <div class="pl-stage">
+        <div class="pl-name">Discovery Held</div>
+        <div class="stage-sub">+30 pts to account score</div>
+        <div class="stage-note">AE updates deal stage within 24h</div>
+      </div>
+      <div class="pl-arrow">→</div>
+      <div class="pl-stage">
+        <div class="pl-name">Demo / POC</div>
+        <div class="stage-sub">Multi-stakeholder</div>
+        <div class="stage-note">Target 2+ contacts from buying committee</div>
+      </div>
+      <div class="pl-arrow">→</div>
+      <div class="pl-stage">
+        <div class="pl-name">Proposal Sent</div>
+        <div class="stage-sub">+20 pts on request</div>
+        <div class="stage-note">SDR continues warming non-primary contacts</div>
+      </div>
+      <div class="pl-arrow">→</div>
+      <div class="pl-stage">
+        <div class="pl-name">Negotiation</div>
+        <div class="stage-sub">Score monitored</div>
+        <div class="stage-note">Engagement drop = early churn signal</div>
+      </div>
+      <div class="pl-arrow">→</div>
+      <div class="pl-stage end">
+        <div class="pl-name">✅ Closed Won</div>
+        <div class="stage-sub">ABM attributed in Factors</div>
+        <div class="stage-note">Full-cycle attribution recorded</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px;">
+      <div class="tool-block">
+        <div class="tools-row">
+          <div class="tool accent">
+            <img src="https://logo.clearbit.com/hubspot.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+            <div class="fallback-icon" style="display:none;background:#FF7A59;">HS</div>
+            <span>HubSpot Deals</span>
+          </div>
+        </div>
+        <div class="tool-role">Single source of truth for deal stage, activity log, account score, and associated contacts. AE deal notes and call recordings stored here.</div>
+      </div>
+      <div class="tool-block">
+        <div class="tools-row">
+          <div class="tool">
+            <img src="https://logo.clearbit.com/factors.ai" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+            <div class="fallback-icon" style="display:none;background:#0ea5e9;">Fa</div>
+            <span>Factors.ai — Attribution</span>
+          </div>
+        </div>
+        <div class="tool-role">Multi-touch attribution model shows which channels (ads, webinar, email, event) influenced each closed deal. Proves ABM ROI to leadership.</div>
+      </div>
+      <div class="tool-block">
+        <div class="tools-row">
+          <div class="tool">
+            <img src="https://logo.clearbit.com/n8n.io" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt="">
+            <div class="fallback-icon" style="display:none;background:#ea4b71;">n8</div>
+            <span>n8n — Re-engagement trigger</span>
+          </div>
+        </div>
+        <div class="tool-role">If a deal goes cold (no activity for 30 days), n8n fires an automatic re-engagement sequence. Closed Lost accounts re-enter Tier 2 nurture after 90 days.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════ TECH STACK SUMMARY ═══════════════════════ -->
+<div class="stack-summary">
+  <div style="font-size:13px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:6px;">Full Tech Stack — US ABM Workflow</div>
+  <div style="font-size:11px;color:#334155;margin-bottom:18px;">Tools marked <span class="tag-pill tag-new" style="margin-left:0;">Recommended Add</span> are not in your current stack but are strongly advised for this workflow to function as designed.</div>
+  <div class="g4">
+    <div class="ic">
+      <div class="ic-label" style="color:#475569;">Data &amp; Enrichment Layer</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="tool-block">
+          <div class="tool"><img src="https://logo.clearbit.com/apollo.io" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#e8613c;">Ap</div><span>Apollo.io</span></div>
+          <div class="tool-role">Base account + contact prospecting</div>
+        </div>
+        <div class="tool-block">
+          <div class="tool"><img src="https://logo.clearbit.com/linkedin.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#0a66c2;">Li</div><span>Sales Navigator</span></div>
+          <div class="tool-role">Hiring signals + social intent data</div>
+        </div>
+        <div class="tool-block">
+          <div class="tool"><img src="https://logo.clearbit.com/crunchbase.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#0288d1;">Cb</div><span>Crunchbase</span></div>
+          <div class="tool-role">Funding signals — buying moment detection</div>
+        </div>
+        <div class="tool-block">
+          <div class="tool"><img src="https://logo.clearbit.com/zoominfo.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#00529B;">Zi</div><span>ZoomInfo</span></div>
+          <div class="tool-role">Additional contact enrichment</div>
+        </div>
+        <div class="tool-block">
+          <div class="tool"><img src="https://logo.clearbit.com/rb2b.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#7c3aed;">RB</div><span>RB2B</span></div>
+          <div class="tool-role">Anonymous web visitor ID → HubSpot</div>
+        </div>
+        <div class="tool-block">
+          <div class="tool accent"><img src="https://logo.clearbit.com/clay.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#7c3aed;">Cl</div><span>Clay</span><span class="tag-pill tag-new">Recommended Add</span></div>
+          <div class="tool-role">Waterfall enrichment + list orchestration</div>
+        </div>
+      </div>
+    </div>
+    <div class="ic">
+      <div class="ic-label" style="color:#475569;">Outreach Layer</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="tool-block">
+          <div class="tool"><img src="https://logo.clearbit.com/dripify.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#2563eb;">Dr</div><span>Dripify</span></div>
+          <div class="tool-role">LinkedIn outreach sequences + multi-day cadences</div>
+        </div>
+        <div class="tool-block">
+          <div class="tool"><img src="https://logo.clearbit.com/instantly.ai" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#6366f1;">In</div><span>Instantly</span></div>
+          <div class="tool-role">High-volume email sending with deliverability management</div>
+        </div>
+        <div class="tool-block">
+          <div class="tool"><img src="https://logo.clearbit.com/lemlist.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#f97316;">Le</div><span>Lemlist</span></div>
+          <div class="tool-role">High-personalisation email for Tier 1 accounts</div>
+        </div>
+        <div class="tool-block">
+          <div class="tool"><img src="https://logo.clearbit.com/hubspot.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#FF7A59;">HS</div><span>HubSpot Calling</span></div>
+          <div class="tool-role">Call logging native to CRM — activity auto-recorded to deal</div>
+        </div>
+      </div>
+    </div>
+    <div class="ic">
+      <div class="ic-label" style="color:#475569;">Ads &amp; Analytics</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="tool-block">
+          <div class="tool"><img src="https://logo.clearbit.com/linkedin.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#0a66c2;">Li</div><span>LinkedIn Ads</span></div>
+          <div class="tool-role">Account-matched warming campaigns (Phases 3)</div>
+        </div>
+        <div class="tool-block">
+          <div class="tool"><img src="https://logo.clearbit.com/factors.ai" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#0ea5e9;">Fa</div><span>Factors.ai</span></div>
+          <div class="tool-role">Account-level attribution + engagement tracking across all channels</div>
+        </div>
+        <div class="tool-block">
+          <div class="tool"><img src="https://logo.clearbit.com/g2.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#FF492C;">G2</div><span>G2 Buyer Intent</span><span class="tag-pill" style="background:rgba(148,163,184,0.1);color:#64748b;">Optional</span></div>
+          <div class="tool-role">Third-party intent — accounts researching your category on G2</div>
+        </div>
+      </div>
+    </div>
+    <div class="ic">
+      <div class="ic-label" style="color:#475569;">CRM &amp; Orchestration</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="tool-block">
+          <div class="tool accent"><img src="https://logo.clearbit.com/hubspot.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#FF7A59;">HS</div><span>HubSpot</span><span class="tag-pill tag-core">Core</span></div>
+          <div class="tool-role">Single source of truth — scores, activities, deals, pipeline, SLA workflows</div>
+        </div>
+        <div class="tool-block">
+          <div class="tool accent"><img src="https://logo.clearbit.com/n8n.io" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#ea4b71;">n8</div><span>n8n</span><span class="tag-pill tag-orch">Automation</span></div>
+          <div class="tool-role">Backbone automation connecting all systems — runs scoring, signal routing, and re-engagement workflows</div>
+        </div>
+        <div class="tool-block">
+          <div class="tool"><div class="fallback-icon" style="display:flex;background:#D4AF37;color:#0a1628;font-size:8px;">AI</div><span>Claude Cowork</span><span class="tag-pill tag-orch">AI Layer</span></div>
+          <div class="tool-role">Intelligent signal analysis, SDR research briefs, scoring logic, personalisation input</div>
+        </div>
+        <div class="tool-block">
+          <div class="tool"><img src="https://logo.clearbit.com/zapier.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#FF4A00;">Za</div><span>Zapier</span></div>
+          <div class="tool-role">Lighter integrations — event webhooks, Slack SLA notifications, form triggers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">GrowthSpree · US ABM Workflow 2026 · Signal-led · HubSpot-native · Mid-Market B2B SaaS</div>
+
+</div>
+</body>
+</html>
