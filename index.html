@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>US ABM Workflow — GrowthSpree 2026</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; scrollbar-width: thin;
+  scrollbar-color: rgba(212, 175, 55, 0.06) transparent; }
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   background: #0a1628;
@@ -13,6 +14,29 @@ body {
   padding: 48px 24px;
   min-width: 960px;
 }
+
+/* Thin modern scrollbar */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4b5dff;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7aff;
+}
+
+
 .container { max-width: 1300px; margin: 0 auto; }
 
 /* ── HEADER ── */
@@ -25,7 +49,7 @@ body {
   display: inline-block; margin-bottom: 14px;
 }
 .header h1 { font-size: 34px; font-weight: 700; color: #f8fafc; margin-bottom: 8px; letter-spacing: -0.5px; }
-.header p { color: #475569; font-size: 13px; }
+.header p { color: #afb8c5; font-size: 13px; }
 
 /* ── PHASE LAYOUT: 2-COLUMN (content + explanation) ── */
 .phase-wrap {
@@ -38,7 +62,7 @@ body {
 
 /* ── PHASE CARD ── */
 .phase-card {
-  background: #132035; border: 1px solid #1e3a5f;
+  background: #132035; border: 1px solid #bccde5;
   border-radius: 18px; padding: 26px 30px; position: relative;
 }
 .phase-card.gold-border { border-color: rgba(212,175,55,0.35); }
@@ -50,9 +74,9 @@ body {
   display: flex; align-items: center; justify-content: center;
   font-size: 13px; font-weight: 800; flex-shrink: 0; margin-top: 2px;
 }
-.phase-num.muted { background: #1e3a5f; color: #475569; }
+.phase-num.muted { background: #bccde5; color: #afb8c5; }
 .phase-title { font-size: 16px; font-weight: 700; color: #f1f5f9; }
-.phase-sub { font-size: 11px; color: #334155; margin-top: 3px; line-height: 1.5; }
+.phase-sub { font-size: 11px; color: #cdd7e5; margin-top: 3px; line-height: 1.5; }
 
 /* ── PHASE OVERVIEW TEXT ── */
 .phase-overview {
@@ -63,7 +87,7 @@ body {
   padding: 10px 14px;
   margin-bottom: 16px;
   font-size: 12px;
-  color: #94a3b8;
+  color: #82a7db;
   line-height: 1.7;
 }
 .phase-overview strong { color: #cbd5e1; font-weight: 600; }
@@ -71,7 +95,7 @@ body {
 /* ── EXPLANATION SIDEBAR ── */
 .explain-box {
   background: #0d1e35;
-  border: 1px solid #1e3a5f;
+  border: 1px solid #bccde5;
   border-radius: 14px;
   padding: 20px;
   position: sticky;
@@ -91,10 +115,10 @@ body {
   margin-bottom: 4px; display: flex; align-items: center; gap: 5px;
 }
 .explain-item .ei-body {
-  font-size: 11px; color: #475569; line-height: 1.6;
+  font-size: 11px; color: #afb8c5; line-height: 1.6;
 }
-.explain-item .ei-body em { color: #94a3b8; font-style: normal; font-weight: 500; }
-.explain-divider { border: none; border-top: 1px solid #1e3a5f; margin: 12px 0; }
+.explain-item .ei-body em { color: #82a7db; font-style: normal; font-weight: 500; }
+.explain-divider { border: none; border-top: 1px solid #bccde5; margin: 12px 0; }
 
 /* Insight callout inside sidebar */
 .insight {
@@ -111,7 +135,7 @@ body {
 
 /* ── SECTION LABEL ── */
 .sec-label {
-  font-size: 10px; color: #334155; text-transform: uppercase;
+  font-size: 10px; color: bfc3c; text-transform: uppercase;
   letter-spacing: 0.6px; font-weight: 700; margin-bottom: 9px;
 }
 
@@ -119,7 +143,7 @@ body {
 .tools-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .tool {
   display: flex; align-items: center; gap: 7px;
-  background: #0a1628; border: 1px solid #1e3a5f; border-radius: 8px;
+  background: #0a1628; border: 1px solid #bccde5; border-radius: 8px;
   padding: 6px 12px; font-size: 12px; color: #cbd5e1;
   transition: border-color 0.2s, color 0.2s; cursor: default;
 }
@@ -141,8 +165,8 @@ body {
 
 /* ── TOOL ROLE ANNOTATION ── */
 .tool-block { margin-bottom: 8px; }
-.tool-role { font-size: 10px; color: #334155; margin-top: 4px; padding-left: 4px; line-height: 1.4; }
-.tool-role em { color: #475569; font-style: normal; }
+.tool-role { font-size: 10px; color: #cdd7e5; margin-top: 4px; padding-left: 4px; line-height: 1.4; }
+.tool-role em { color: #afb8c5; font-style: normal; }
 
 /* ── CONNECTOR ── */
 .connector {
@@ -167,13 +191,13 @@ body {
 .g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
 
 /* ── INNER CARD ── */
-.ic { background: #0a1628; border: 1px solid #1e3a5f; border-radius: 10px; padding: 14px 16px; }
+.ic { background: #0a1628; border: 1px solid #bccde5; border-radius: 10px; padding: 14px 16px; }
 .ic-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 9px; }
 
 /* ── TIER BADGES ── */
 .t1 { background: rgba(212,175,55,0.15); color: #D4AF37; border-radius: 4px; padding: 2px 8px; font-size: 10px; font-weight: 700; }
 .t2 { background: rgba(96,165,250,0.15); color: #60a5fa; border-radius: 4px; padding: 2px 8px; font-size: 10px; font-weight: 700; }
-.t3 { background: rgba(148,163,184,0.15); color: #94a3b8; border-radius: 4px; padding: 2px 8px; font-size: 10px; font-weight: 700; }
+.t3 { background: rgba(148,163,184,0.15); color: #82a7db; border-radius: 4px; padding: 2px 8px; font-size: 10px; font-weight: 700; }
 
 /* ── SCORE PILLS ── */
 .sp { display: inline-flex; align-items: center; gap: 4px; border-radius: 20px; padding: 3px 10px; font-size: 11px; font-weight: 700; border: 1px solid; }
@@ -187,23 +211,23 @@ body {
 .score-tbl { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 12px; }
 .score-tbl th {
   text-align: left; padding: 8px 12px; background: #0a1628;
-  color: #475569; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px;
-  border-bottom: 1px solid #1e3a5f;
+  color: #afb8c5; font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px;
+  border-bottom: 1px solid #bccde5;
 }
-.score-tbl td { padding: 8px 12px; border-bottom: 1px solid #1e3a5f; color: #94a3b8; vertical-align: middle; }
+.score-tbl td { padding: 8px 12px; border-bottom: 1px solid #bccde5; color: #82a7db; vertical-align: middle; }
 .score-tbl tr:last-child td { border-bottom: none; }
 .bar-wrap { display: flex; align-items: center; gap: 8px; }
 .bar { height: 5px; border-radius: 3px; background: #D4AF37; }
 .pts-val { font-weight: 700; color: #D4AF37; font-size: 12px; white-space: nowrap; }
-.tbl-note { font-size: 10px; color: #334155; margin-top: 4px; font-style: italic; }
+.tbl-note { font-size: 10px; color: #cdd7e5; margin-top: 4px; font-style: italic; }
 
 /* ── WEEK CARDS ── */
 .week-row { display: flex; gap: 8px; }
-.wk { flex: 1; background: #0a1628; border: 1px solid #1e3a5f; border-radius: 8px; padding: 10px 12px; }
+.wk { flex: 1; background: #0a1628; border: 1px solid #bccde5; border-radius: 8px; padding: 10px 12px; }
 .wk-num { color: #D4AF37; font-size: 11px; font-weight: 700; margin-bottom: 3px; }
 .wk-type { color: #f1f5f9; font-size: 12px; font-weight: 600; margin-bottom: 3px; }
-.wk-desc { color: #475569; font-size: 10px; }
-.wk-why  { color: #334155; font-size: 10px; margin-top: 5px; padding-top: 5px; border-top: 1px solid #1e3a5f; font-style: italic; }
+.wk-desc { color: #afb8c5; font-size: 10px; }
+.wk-why  { color: #cdd7e5; font-size: 10px; margin-top: 5px; padding-top: 5px; border-top: 1px solid #bccde5; font-style: italic; }
 
 /* ── CHANNEL PILLS ── */
 .ch { display: inline-flex; align-items: center; gap: 5px; border-radius: 6px; padding: 4px 10px; font-size: 11px; font-weight: 600; border: 1px solid; }
@@ -212,18 +236,18 @@ body {
 .ch-call { background: rgba(168,85,247,0.1);  color: #c084fc; border-color: rgba(168,85,247,0.25); }
 
 /* ── SEQUENCE STEPS ── */
-.seq-step { font-size: 11px; color: #64748b; line-height: 1.9; }
+.seq-step { font-size: 11px; color: #b0c6e5; line-height: 1.9; }
 .seq-step .day { color: #D4AF37; font-weight: 700; }
-.seq-step .action { color: #94a3b8; }
-.seq-step .why { color: #334155; font-size: 10px; margin-left: 4px; }
+.seq-step .action { color: #82a7db; }
+.seq-step .why { color: #cdd7e5; font-size: 10px; margin-left: 4px; }
 
 /* ── SIGNAL GRID ── */
 .sig-grid { display: grid; gap: 8px; }
-.sig-item { background: #0a1628; border: 1px solid #1e3a5f; border-radius: 8px; padding: 10px 8px; text-align: center; }
+.sig-item { background: #0a1628; border: 1px solid #bccde5; border-radius: 8px; padding: 10px 8px; text-align: center; }
 .sig-icon { font-size: 20px; margin-bottom: 4px; }
-.sig-name { font-size: 10px; color: #64748b; margin-bottom: 4px; line-height: 1.3; }
+.sig-name { font-size: 10px; color: #b0c6e5; margin-bottom: 4px; line-height: 1.3; }
 .sig-pts  { font-size: 13px; font-weight: 800; color: #D4AF37; }
-.sig-why  { font-size: 9px; color: #1e3a5f; margin-top: 3px; line-height: 1.3; }
+.sig-why  { font-size: 9px; color: #bccde5; margin-top: 3px; line-height: 1.3; }
 
 /* ── SLA BOXES ── */
 .sla-row { display: flex; gap: 10px; margin-top: 12px; }
@@ -232,23 +256,24 @@ body {
 .sla-box.amber  { border-color: #f59e0b; }
 .sla-box.purple { border-color: #a78bfa; }
 .sla-title  { font-weight: 700; color: #f1f5f9; margin-bottom: 4px; font-size: 12px; }
-.sla-detail { color: #475569; line-height: 1.5; font-size: 11px; }
-.sla-rationale { color: #334155; font-size: 10px; margin-top: 5px; padding-top: 5px; border-top: 1px solid #1e3a5f; font-style: italic; }
+.sla-detail { color: #afb8c5; line-height: 1.5; font-size: 11px; }
+.sla-rationale { color: #cdd7e5; font-size: 10px; margin-top: 5px; padding-top: 5px; border-top: 1px solid #bccde5; font-style: italic; }
 em { color: #f8fafc; font-style: normal; font-weight: 600; }
 
 /* ── SCORE BANDS ── */
 .band-row { display: flex; flex-direction: column; gap: 5px; }
-.band { display: flex; justify-content: space-between; align-items: center; background: #0a1628; border: 1px solid #1e3a5f; border-radius: 8px; padding: 8px 12px; gap: 8px; }
-.band-name { font-size: 12px; color: #94a3b8; }
-.band-detail { font-size: 10px; color: #334155; flex: 1; }
+.band { display: flex; justify-content: space-between; align-items: center; background: #0a1628; border: 1px solid #bccde5; border-radius: 8px; padding: 8px 12px; gap: 8px; }
+.band-name { font-size: 12px; color: #82a7db; }
+.band-detail { font-size: 10px; color: #cdd7e5; flex: 1; }
 .band.fire { border-color: rgba(212,175,55,0.4); background: rgba(212,175,55,0.04); }
 .band.fire .band-name { color: #D4AF37; font-weight: 700; }
 
 /* ── PIPELINE ── */
-.pipeline { display: flex; align-items: flex-start; gap: 0; flex-wrap: nowrap; padding: 4px 0; overflow-x: auto; }
-.pl-stage { background: #0a1628; border: 1px solid #1e3a5f; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #94a3b8; text-align: center; white-space: nowrap; flex-shrink: 0; }
-.pl-stage .stage-sub  { font-size: 10px; color: #334155; margin-top: 2px; }
-.pl-stage .stage-note { font-size: 9px; color: #1e3a5f; margin-top: 3px; font-style: italic; }
+.pipeline-wrapper{overflow-x: auto;}
+.pipeline { display: flex; align-items: flex-start; gap: 0; flex-wrap: nowrap; padding: 4px 4px; margin-bottom: 4px; overflow-x: auto; }
+.pl-stage { background: #0a1628; border: 1px solid #bccde5; border-radius: 8px; padding: 10px 14px; font-size: 12px; color: #82a7db; text-align: center; white-space: nowrap; flex-shrink: 0; }
+.pl-stage .stage-sub  { font-size: 10px; color: #cdd7e5; margin-top: 2px; }
+.pl-stage .stage-note { font-size: 9px; color: #bccde5; margin-top: 3px; font-style: italic; }
 .pl-stage.start { border-color: rgba(212,175,55,0.4); }
 .pl-stage.start .pl-name { color: #D4AF37; font-weight: 700; }
 .pl-stage.end   { border-color: rgba(74,222,128,0.4); }
@@ -257,7 +282,7 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
 
 /* ── DIVIDER ── */
 .divider { display: flex; align-items: center; gap: 10px; margin: 8px 0 14px; }
-.divider .dline { flex: 1; height: 1px; background: #1e3a5f; }
+.divider .dline { flex: 1; height: 1px; background: #bccde5; }
 .divider .dtxt  { font-size: 10px; color: #D4AF37; font-weight: 600; white-space: nowrap; }
 
 /* ── CALLOUT NOTE ── */
@@ -271,10 +296,10 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
 }
 
 /* ── STACK SUMMARY ── */
-.stack-summary { background: #132035; border: 1px solid #1e3a5f; border-radius: 18px; padding: 26px 30px; margin-top: 16px; }
+.stack-summary { background: #132035; border: 1px solid #bccde5; border-radius: 18px; padding: 26px 30px; margin-top: 16px; }
 
 /* ── FOOTER ── */
-.footer { text-align: center; margin-top: 36px; color: #1e3a5f; font-size: 12px; }
+.footer { text-align: center; margin-top: 36px; color: #bccde5; font-size: 12px; }
 
 /* ── CONNECTOR WRAPPER (for 2-col layout alignment) ── */
 .connector-wrap {
@@ -283,7 +308,7 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
   gap: 16px;
 }
 .connector-wrap .connector { align-items: center; }
-.connector-wrap .conn-spacer { /* empty right column */ }
+
 
 /* Phase number label on left edge */
 .phase-step-num {
@@ -327,21 +352,21 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
     <div class="g3">
       <div class="ic">
         <div class="ic-label" style="color:#D4AF37;">Tier 1 · 1:1 ABM</div>
-        <div style="font-size:12px;color:#64748b;margin-bottom:8px;">50–100 accounts / month</div>
+        <div style="font-size:12px;color:#b0c6e5;margin-bottom:8px;">50–100 accounts / month</div>
         <div class="sp sp-hot" style="margin-bottom:10px;">Score 60+</div>
-        <div style="font-size:11px;color:#475569;line-height:1.7;">Full bespoke treatment<br>Ads + LinkedIn + Email + Direct Sales<br>AI research brief per account<br>AE looped in early</div>
+        <div style="font-size:11px;color:#afb8c5;line-height:1.7;">Full bespoke treatment<br>Ads + LinkedIn + Email + Direct Sales<br>AI research brief per account<br>AE looped in early</div>
       </div>
       <div class="ic">
         <div class="ic-label" style="color:#60a5fa;">Tier 2 · 1:Few</div>
-        <div style="font-size:12px;color:#64748b;margin-bottom:8px;">200–400 accounts / month</div>
+        <div style="font-size:12px;color:#b0c6e5;margin-bottom:8px;">200–400 accounts / month</div>
         <div class="sp sp-cool" style="margin-bottom:10px;">Score 35–59</div>
-        <div style="font-size:11px;color:#475569;line-height:1.7;">Segment-personalised sequences<br>Semi-automated outreach<br>SDR-owned with templates<br>Escalate if score reaches 60+</div>
+        <div style="font-size:11px;color:#afb8c5;line-height:1.7;">Segment-personalised sequences<br>Semi-automated outreach<br>SDR-owned with templates<br>Escalate if score reaches 60+</div>
       </div>
       <div class="ic">
-        <div class="ic-label" style="color:#94a3b8;">Tier 3 · 1:Many</div>
-        <div style="font-size:12px;color:#64748b;margin-bottom:8px;">500+ accounts / month</div>
+        <div class="ic-label" style="color:#82a7db;">Tier 3 · 1:Many</div>
+        <div style="font-size:12px;color:#b0c6e5;margin-bottom:8px;">500+ accounts / month</div>
         <div class="sp sp-cold" style="margin-bottom:10px;">Score &lt; 35</div>
-        <div style="font-size:11px;color:#475569;line-height:1.7;">Automated nurture only<br>No SDR time spent here<br>Retargeting ads keep brand visible<br>Escalate if intent spike +15 pts</div>
+        <div style="font-size:11px;color:#afb8c5;line-height:1.7;">Automated nurture only<br>No SDR time spent here<br>Retargeting ads keep brand visible<br>Escalate if intent spike +15 pts</div>
       </div>
     </div>
   </div>
@@ -555,7 +580,7 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
           <div class="band"><span class="band-name">Tier 2 — Semi ABM</span><div class="band-detail">Sequences + SDR-assisted</div><span class="sp sp-cool">35–59</span></div>
           <div class="band"><span class="band-name">Tier 3 — Nurture</span><div class="band-detail">Automation only</div><span class="sp sp-cold">&lt;35</span></div>
         </div>
-        <div style="margin-top:10px;font-size:11px;color:#334155;line-height:1.7;padding:10px;background:#0a1628;border-radius:8px;border:1px solid #1e3a5f;">
+        <div style="margin-top:10px;font-size:11px;color:#cdd7e5;line-height:1.7;padding:10px;background:#0a1628;border-radius:8px;border:1px solid #bccde5;">
           Score velocity alert: if an account's score rises <strong style="color:#D4AF37;">+20 points within 7 days</strong>, an instant SDR alert fires regardless of absolute score — this signals a buying window opening right now.
         </div>
       </div>
@@ -575,42 +600,42 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
         <tr>
           <td>Firmographic Fit (size, industry, geo, revenue)</td>
           <td><div class="bar-wrap"><div class="bar" style="width:44px;"></div><span class="pts-val">20</span></div></td>
-          <td style="color:#334155;">Apollo / Clay</td>
-          <td style="color:#334155;font-size:11px;">Baseline ICP match — is this even a company we can sell to?</td>
+          <td style="color:#cdd7e5;">Apollo / Clay</td>
+          <td style="color:#cdd7e5;font-size:11px;">Baseline ICP match — is this even a company we can sell to?</td>
         </tr>
         <tr>
           <td>Technographic Fit (stack alignment with your solution)</td>
           <td><div class="bar-wrap"><div class="bar" style="width:22px;"></div><span class="pts-val">10</span></div></td>
-          <td style="color:#334155;">Clay / Clearbit</td>
-          <td style="color:#334155;font-size:11px;">Are they running tools your product integrates with or replaces? Signals readiness.</td>
+          <td style="color:#cdd7e5;">Clay / Clearbit</td>
+          <td style="color:#cdd7e5;font-size:11px;">Are they running tools your product integrates with or replaces? Signals readiness.</td>
         </tr>
         <tr>
           <td>Hiring Signals (relevant roles currently posted)</td>
           <td><div class="bar-wrap"><div class="bar" style="width:33px;"></div><span class="pts-val">15</span></div></td>
-          <td style="color:#334155;">Sales Navigator</td>
-          <td style="color:#334155;font-size:11px;">A new hire in the relevant function = budget unlocked + a problem being actively addressed.</td>
+          <td style="color:#cdd7e5;">Sales Navigator</td>
+          <td style="color:#cdd7e5;font-size:11px;">A new hire in the relevant function = budget unlocked + a problem being actively addressed.</td>
         </tr>
         <tr>
           <td>Funding Signal (raised capital in last 6 months)</td>
           <td><div class="bar-wrap"><div class="bar" style="width:22px;"></div><span class="pts-val">10</span></div></td>
-          <td style="color:#334155;">Crunchbase</td>
-          <td style="color:#334155;font-size:11px;">Post-funding = growth mode = new tool budgets. One of the strongest buying-moment signals.</td>
+          <td style="color:#cdd7e5;">Crunchbase</td>
+          <td style="color:#cdd7e5;font-size:11px;">Post-funding = growth mode = new tool budgets. One of the strongest buying-moment signals.</td>
         </tr>
         <tr>
           <td>3rd-Party Intent (actively researching your category)</td>
           <td><div class="bar-wrap"><div class="bar" style="width:44px;"></div><span class="pts-val">20</span></div></td>
-          <td style="color:#334155;">Sales Nav / G2</td>
-          <td style="color:#334155;font-size:11px;">They're in-market right now. Teams acting on this within 24 hours see 29% more opportunities.</td>
+          <td style="color:#cdd7e5;">Sales Nav / G2</td>
+          <td style="color:#cdd7e5;font-size:11px;">They're in-market right now. Teams acting on this within 24 hours see 29% more opportunities.</td>
         </tr>
         <tr>
           <td>Web Visit — RB2B identifies the company</td>
           <td><div class="bar-wrap"><div class="bar" style="width:22px;"></div><span class="pts-val">10</span></div></td>
-          <td style="color:#334155;">RB2B</td>
-          <td style="color:#334155;font-size:11px;">First-party intent — they found you and visited. Self-qualification is the strongest signal.</td>
+          <td style="color:#cdd7e5;">RB2B</td>
+          <td style="color:#cdd7e5;font-size:11px;">First-party intent — they found you and visited. Self-qualification is the strongest signal.</td>
         </tr>
       </tbody>
     </table>
-    <div class="tbl-note" style="margin-top:8px;font-size:10px;color:#334155;padding:0 4px;">* This is the initial ICP Fit + Intent score (max 85). The account's running score grows further as engagement and sales activities are added in Phases 5 and 6.</div>
+    <div class="tbl-note" style="margin-top:8px;font-size:10px;color:#cdd7e5;padding:0 4px;">* This is the initial ICP Fit + Intent score (max 85). The account's running score grows further as engagement and sales activities are added in Phases 5 and 6.</div>
   </div>
 
   <div class="explain-box">
@@ -712,7 +737,7 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
       <div>
         <div class="sec-label" style="margin-bottom:10px;"><span class="t3">TIER 3</span> &nbsp; Automated Nurture Only</div>
         <div class="ic" style="margin-bottom:12px;">
-          <div style="font-size:12px;color:#64748b;line-height:1.8;">
+          <div style="font-size:12px;color:#b0c6e5;line-height:1.8;">
             Automated email nurture sequence<br>
             No LinkedIn DMs · No SDR calling time<br>
             Retargeting ads keep brand visible<br>
@@ -722,10 +747,10 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
 
         <div class="sec-label" style="margin-bottom:8px;">SDR Organic Activity (runs in parallel for Tier 1)</div>
         <div class="ic">
-          <div style="font-size:12px;color:#64748b;line-height:1.8;margin-bottom:8px;">
+          <div style="font-size:12px;color:#b0c6e5;line-height:1.8;margin-bottom:8px;">
             SDR/AE assigned to the account comments on the prospect's LinkedIn posts, shares relevant industry content, and follows key contacts. <strong style="color:#f1f5f9;">10–15 mins/day per Tier 1 account.</strong>
           </div>
-          <div style="font-size:10px;color:#334155;line-height:1.6;">Why: creates organic visibility at zero ad cost. When the connection request lands, the name is already familiar — not a stranger in their inbox.</div>
+          <div style="font-size:10px;color:#cdd7e5;line-height:1.6;">Why: creates organic visibility at zero ad cost. When the connection request lands, the name is already familiar — not a stranger in their inbox.</div>
         </div>
         <div class="rule-note">🚫 Hard rule: No SDR email or LinkedIn DM is sent to any account that hasn't received minimum ad warming. This protects your sender reputation and improves reply rates.</div>
       </div>
@@ -853,7 +878,7 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
           <span class="day">Voicemail:</span><br>
           <span class="why">Always references prior context: "I sent you a message on LinkedIn about X — wanted to follow up directly." Keeps the thread cohesive across channels.</span>
         </div>
-        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #1e3a5f;font-size:10px;color:#334155;line-height:1.6;">
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid #bccde5;font-size:10px;color:#cdd7e5;line-height:1.6;">
           All calls logged in HubSpot with outcome (Connected / VM / No Answer). This is mandatory — it feeds the account's engagement score and appears in the priority queue.
         </div>
       </div>
@@ -1094,7 +1119,7 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
             <div class="sig-why">Late-stage intent — escalate to AE immediately</div>
           </div>
         </div>
-        <div style="margin-top:10px;padding:10px;background:#0a1628;border:1px solid #1e3a5f;border-radius:8px;font-size:11px;color:#334155;line-height:1.6;">
+        <div style="margin-top:10px;padding:10px;background:#0a1628;border:1px solid #bccde5;border-radius:8px;font-size:11px;color:#cdd7e5;line-height:1.6;">
           <strong style="color:#f1f5f9;">Mandatory logging rule:</strong> Every call outcome (Connected / VM / No Answer), every reply, and every meeting must be logged in HubSpot. If it's not in HubSpot, it didn't happen for scoring purposes — and the priority queue breaks.
         </div>
       </div>
@@ -1127,7 +1152,7 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
             <span class="sp sp-gold">120+</span>
           </div>
         </div>
-        <div style="margin-top:10px;padding:10px;background:#0a1628;border:1px solid #1e3a5f;border-radius:8px;font-size:11px;color:#334155;line-height:1.6;">
+        <div style="margin-top:10px;padding:10px;background:#0a1628;border:1px solid #bccde5;border-radius:8px;font-size:11px;color:#cdd7e5;line-height:1.6;">
           SDRs open HubSpot each morning and work top-to-bottom. The queue is re-ranked overnight. Accounts that scored higher since yesterday move up. No spreadsheets. No manager briefings. The system tells you who to call.
         </div>
       </div>
@@ -1188,7 +1213,7 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
 
 
 <!-- ════════════════ PHASE 7 ════════════════ -->
-<div class="phase-wrap full">
+<div class="full">
   <div class="phase-card">
     <div class="phase-header">
       <div class="phase-num">7</div>
@@ -1201,6 +1226,8 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
       Once an account becomes an MQL and a deal is created in HubSpot, the ABM score doesn't stop — it continues tracking engagement throughout the deal cycle. <strong>An AE who can see which stakeholders are engaging, which pages they're revisiting, and how the account score is trending can prioritise their deal effort intelligently.</strong> Factors.ai provides the attribution layer that proves, at the end of each quarter, exactly how much pipeline the ABM workflow created and which channels drove the most influence.
     </div>
 
+    <div class="pipeline-wrapper">
+    
     <div class="pipeline">
       <div class="pl-stage start">
         <div class="pl-name">🔥 MQL</div>
@@ -1245,6 +1272,8 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
       </div>
     </div>
 
+    </div>
+
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:16px;">
       <div class="tool-block">
         <div class="tools-row">
@@ -1283,11 +1312,11 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
 
 <!-- ═══════════════════════ TECH STACK SUMMARY ═══════════════════════ -->
 <div class="stack-summary">
-  <div style="font-size:13px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:6px;">Full Tech Stack — US ABM Workflow</div>
-  <div style="font-size:11px;color:#334155;margin-bottom:18px;">Tools marked <span class="tag-pill tag-new" style="margin-left:0;">Recommended Add</span> are not in your current stack but are strongly advised for this workflow to function as designed.</div>
+  <div style="font-size:13px;font-weight:700;color:#afb8c5;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:6px;">Full Tech Stack — US ABM Workflow</div>
+  <div style="font-size:11px;color:#cdd7e5;margin-bottom:18px;">Tools marked <span class="tag-pill tag-new" style="margin-left:0;">Recommended Add</span> are not in your current stack but are strongly advised for this workflow to function as designed.</div>
   <div class="g4">
     <div class="ic">
-      <div class="ic-label" style="color:#475569;">Data &amp; Enrichment Layer</div>
+      <div class="ic-label" style="color:#afb8c5;">Data &amp; Enrichment Layer</div>
       <div style="display:flex;flex-direction:column;gap:8px;">
         <div class="tool-block">
           <div class="tool"><img src="https://logo.clearbit.com/apollo.io" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#e8613c;">Ap</div><span>Apollo.io</span></div>
@@ -1316,7 +1345,7 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
       </div>
     </div>
     <div class="ic">
-      <div class="ic-label" style="color:#475569;">Outreach Layer</div>
+      <div class="ic-label" style="color:#afb8c5;">Outreach Layer</div>
       <div style="display:flex;flex-direction:column;gap:8px;">
         <div class="tool-block">
           <div class="tool"><img src="https://logo.clearbit.com/dripify.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#2563eb;">Dr</div><span>Dripify</span></div>
@@ -1337,7 +1366,7 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
       </div>
     </div>
     <div class="ic">
-      <div class="ic-label" style="color:#475569;">Ads &amp; Analytics</div>
+      <div class="ic-label" style="color:#afb8c5;">Ads &amp; Analytics</div>
       <div style="display:flex;flex-direction:column;gap:8px;">
         <div class="tool-block">
           <div class="tool"><img src="https://logo.clearbit.com/linkedin.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#0a66c2;">Li</div><span>LinkedIn Ads</span></div>
@@ -1348,13 +1377,13 @@ em { color: #f8fafc; font-style: normal; font-weight: 600; }
           <div class="tool-role">Account-level attribution + engagement tracking across all channels</div>
         </div>
         <div class="tool-block">
-          <div class="tool"><img src="https://logo.clearbit.com/g2.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#FF492C;">G2</div><span>G2 Buyer Intent</span><span class="tag-pill" style="background:rgba(148,163,184,0.1);color:#64748b;">Optional</span></div>
+          <div class="tool"><img src="https://logo.clearbit.com/g2.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#FF492C;">G2</div><span>G2 Buyer Intent</span><span class="tag-pill" style="background:rgba(148,163,184,0.1);color:#b0c6e5;">Optional</span></div>
           <div class="tool-role">Third-party intent — accounts researching your category on G2</div>
         </div>
       </div>
     </div>
     <div class="ic">
-      <div class="ic-label" style="color:#475569;">CRM &amp; Orchestration</div>
+      <div class="ic-label" style="color:#afb8c5;">CRM &amp; Orchestration</div>
       <div style="display:flex;flex-direction:column;gap:8px;">
         <div class="tool-block">
           <div class="tool accent"><img src="https://logo.clearbit.com/hubspot.com" onerror="this.parentNode.querySelector('.fallback-icon').style.display='flex';this.remove()" alt=""><div class="fallback-icon" style="display:none;background:#FF7A59;">HS</div><span>HubSpot</span><span class="tag-pill tag-core">Core</span></div>
